@@ -1,0 +1,37 @@
+{
+    "manifest_version": 3,
+    "name": "Moodle Session Saver",
+    "version": "1.0",
+    "description": "Automatically save and restore Moodle session cookies.",
+    "action": {
+        "default_popup": "popup.html",
+        "default_title": "Moodle Session Saver",
+        "default_icon": {
+            "48": "images/icon-48.png",
+            "96": "images/icon-96.png",
+            "128": "images/icon-128.png"
+        }
+    },
+    "background": {
+        "service_worker": "background.js"
+    },
+    "host_permissions": [
+        "*://*/*"
+    ],
+    "content_scripts": [
+        {
+            "matches": [
+                "*://*/*"
+            ],
+            "js": [
+                "content.js"
+            ]
+        }
+    ],
+    "permissions": [
+        "cookies",
+        "storage",
+        "activeTab",
+        "tabs"
+    ]
+}
