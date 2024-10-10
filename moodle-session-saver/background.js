@@ -1,4 +1,10 @@
-// Get the current tab's URL and extract the domain
+// Set default settings on installation
+chrome.runtime.onInstalled.addListener(() => {
+    chrome.storage.local.set({ autoSaveEnabled: true }, () => {
+        console.log("Auto-save/restore enabled by default.");
+    });
+});
+
 function getCurrentDomain(callback) {
     chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
         const url = new URL(tabs[0].url);
